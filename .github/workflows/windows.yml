@@ -1,4 +1,4 @@
-name: Build for Windows
+name: Build and Release Windows
 
 on:
   release:
