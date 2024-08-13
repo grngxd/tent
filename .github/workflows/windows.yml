@@ -1,12 +1,10 @@
 name: Build and Release Windows
 
 on:
-  push:
-    branches:
-      - main
+  release: 
+    types: [created]
 
 jobs:
-
   build:
     runs-on: windows-latest
     steps:
@@ -20,3 +18,13 @@ jobs:
 
     - name: Build
       run: go build -v -o out/tent.exe .
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: out/tent.exe
