@@ -2,7 +2,7 @@ name: Build and Release Windows
 
 on:
   release: 
-    types: [created]
+    types: [edited]
 
 jobs:
   build:
