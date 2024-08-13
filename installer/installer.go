@@ -10,6 +10,7 @@ import (
 	"strings"
 	"tent/discord"
 	"tent/logger"
+	"time"
 
 	"github.com/manifoldco/promptui"
 )
@@ -129,6 +130,8 @@ func install(build string) (err error) {
 		logger.Errorf("Failed to kill process: The process \"%s.exe\" is not running.\n", no_spaces)
 	}
 
+	time.Sleep(2 * time.Second)
+
 	if _, err := os.Stat(resources_app_folder); err == nil {
 		files, err := os.ReadDir(resources_app_folder)
 		if err != nil {
@@ -195,6 +198,7 @@ func install(build string) (err error) {
 	if err != nil {
 		return err
 	}
+	time.Sleep(2 * time.Second)
 	logger.Success("Started", build+"!")
 
 	return nil
