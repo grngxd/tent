@@ -195,6 +195,7 @@ func install(build string) (err error) {
 	logger.Info("Starting", build+"...")
 	cmd = exec.Command(exe_location)
 	err = cmd.Start()
+
 	if err != nil {
 		return err
 	}
